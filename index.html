@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cronometro</title>
+</head>
+
+
+<body>
+    <div id="cronometro">
+        <input type="text" name="a" id="time" disabled="disabled" value="00:00:00">
+        <button onclick="main(this.value)" value="i" id="button-main">iniciar</button>
+        <button onclick="main(this.value)" value="z" id="button-main">zerar</button>
+
+        <div id="sistema de salvamento">
+            <select name="saves" id="saves">
+            <option value="00">00:00:00</option>
+        </select>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
