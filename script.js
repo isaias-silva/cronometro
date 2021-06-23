@@ -9,12 +9,15 @@ var b = "";
 var c = "";
 var item = 0;
 
+
+
+
 function save() {
     item++;
     var salvo = document.createElement("option");
     salvo.setAttribute("class", "save");
-    salvo.setAttribute("value", `a_${item}`);
-    salvo.setAttribute("value", `a_${item}`);
+    salvo.setAttribute("id", `a_${item}`);
+    salvo.setAttribute("value", `${time.value}`);
     salvo.setAttribute("selected", "");
     saves.appendChild(salvo);
     salvo.innerHTML = `${time.value}`;
@@ -45,9 +48,11 @@ function temp() {
     } else {
         c = "";
     }
+    escreve();
 
-    time.value = `${a}${min}:${b}${s}:${c}${mil}`;
 }
+
+function escreve() { time.value = `${a}${min}:${b}${s}:${c}${mil}`; }
 
 function main(v) {
     if (v == "i") {
