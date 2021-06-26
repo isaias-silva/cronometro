@@ -1,16 +1,10 @@
 var time = window.document.getElementById("time");
 var saves = window.document.getElementById("saves");
-var s = 0;
-var min = 0;
-var mil = 0;
+var s = 00;
+var min = 00;
+var mil = 00;
 var interval;
-var a = "";
-var b = "";
-var c = "";
 var item = 0;
-
-
-
 
 function save() {
     item++;
@@ -31,28 +25,32 @@ function temp() {
     mil++;
     if (s > 59) {
         min++;
-        s = 0;
+        s = 00;
     }
-    if (min < 10) {
-        a = 0;
-    } else {
-        a = "";
+
+    var ss, smin, smil;
+    ss = String(s);
+    smin = String(min);
+    smil = String(mil);
+    var z = "";
+    var x = "";
+    var y = "";
+
+    if (smin.length < 2) {
+        z = 0;
     }
-    if (s < 10) {
-        b = 0;
-    } else {
-        b = "";
+
+    if (ss.length < 2) {
+        x = 0;
     }
-    if (mil < 10) {
-        c = 0;
-    } else {
-        c = "";
+
+    if (smil.length < 2) {
+        y = 0;
     }
-    escreve();
+
+    time.value = `${z}${min}:${x}${s}:${y}${mil}`;
 
 }
-
-function escreve() { time.value = `${a}${min}:${b}${s}:${c}${mil}`; }
 
 function main(v) {
     if (v == "i") {
@@ -76,6 +74,18 @@ function main(v) {
             window.document.getElementById("button-main").innerHTML = "iniciar";
             window.document.getElementById("button-main").value = "i";
         }
-
     }
+}
+
+function carregar(vs) {
+
+    window.document.getElementById("button-main").innerHTML = "iniciar";
+    window.document.getElementById("button-main").value = "i";
+    clearInterval(interval);
+    time.value = vs;
+    var separator = vs.split(":");
+    min = separator[0];
+    s = separator[1];
+    mil = separator[2] - 1;
+    temp(min, s, mil);
 }
