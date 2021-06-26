@@ -44,3 +44,34 @@
     width: 40px;
     height: 40px;
 }
+
+footer {
+    margin: auto;
+    text-align: center;
+    margin-top: 100px;
+}
+
+@media screen and (max-width:450px) {
+    #cronometro {
+        width: 200px;
+        height: 200px;
+    }
+    #cronometro input {
+        width: 100px;
+        height: 20px;
+        font-size: 20px;
+        position: relative;
+        top: 10px;
+    }
+    #cronometro button {
+        width: 50px;
+        font-size: 10px;
+        height: 25px;
+        position: relative;
+        top: 30px;
+    }
+    #cronometro select {
+        position: relative;
+        top: 40px;
+    }
+}
