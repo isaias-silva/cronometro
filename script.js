@@ -140,3 +140,15 @@ function load() {
 
 
 }
+
+function del() {
+
+
+    saves.innerText = ""
+
+    localStorage.clear();
+
+    alert('limpo!')
+
+
+}

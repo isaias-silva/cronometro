@@ -81,6 +81,16 @@ footer {
     }
 }
 
+#botoes-salvamento {
+    margin-top: 30px;
+}
+
+#botoes-salvamento button {
+    width: 70px;
+    font-size: 15px;
+    height: 30px;
+}
+
 @keyframes grade {
     0% {
         background: blue;
