@@ -1,20 +1,26 @@
-var time = window.document.getElementById("time");
-var saves = window.document.getElementById("saves");
-var s = 00;
-var min = 00;
-var mil = 00;
-var interval;
-var item = 0;
+const time = window.document.getElementById("time");
+const saves = window.document.getElementById("saves");
+let s = 00;
+let min = 00;
+let mil = 00;
+let interval;
+let item = 0;
+let timeguard = [];
+let stats;
+let iten_s;
+let loade;
 
 function save() {
+
     item++;
-    var salvo = document.createElement("option");
+    const salvo = document.createElement("option");
     salvo.setAttribute("class", "save");
     salvo.setAttribute("id", `a_${item}`);
     salvo.setAttribute("value", `${time.value}`);
     salvo.setAttribute("selected", "");
     saves.appendChild(salvo);
     salvo.innerHTML = `${time.value}`;
+
 }
 
 function temp() {
@@ -28,13 +34,13 @@ function temp() {
         s = 00;
     }
 
-    var ss, smin, smil;
+    let ss, smin, smil;
     ss = String(s);
     smin = String(min);
     smil = String(mil);
-    var z = "";
-    var x = "";
-    var y = "";
+    let z = "";
+    let x = "";
+    let y = "";
 
     if (smin.length < 2) {
         z = 0;
@@ -50,6 +56,7 @@ function temp() {
 
     time.value = `${z}${min}:${x}${s}:${y}${mil}`;
 
+
 }
 
 function main(v) {
@@ -62,6 +69,7 @@ function main(v) {
         window.document.getElementById("button-main").value = "i";
 
         clearInterval(interval);
+        guard()
         save();
     } else if (v == "z") {
         time.value = "00:00:00";
@@ -78,14 +86,57 @@ function main(v) {
 }
 
 function carregar(vs) {
+    if (vs == "") { alert('ERRO NENHUM VALOR SELECIONADO') } else {
+        window.document.getElementById("button-main").innerHTML = "iniciar";
+        window.document.getElementById("button-main").value = "i";
+        clearInterval(interval);
+        time.value = vs;
+        var separator = vs.split(":");
+        min = separator[0];
+        s = separator[1];
+        mil = separator[2] - 1;
+        temp(min, s, mil);
 
-    window.document.getElementById("button-main").innerHTML = "iniciar";
-    window.document.getElementById("button-main").value = "i";
-    clearInterval(interval);
-    time.value = vs;
-    var separator = vs.split(":");
-    min = separator[0];
-    s = separator[1];
-    mil = separator[2] - 1;
-    temp(min, s, mil);
+        window.document.getElementById("button-main").innerHTML = "iniciar";
+        window.document.getElementById("button-main").value = "i";
+        clearInterval(interval);
+        time.value = vs;
+        var separator = vs.split(":");
+        min = separator[0];
+        s = separator[1];
+        mil = separator[2] - 1;
+        temp(min, s, mil);
+
+    }
+
+}
+
+function guard() {
+
+    timeguard[item] = time.value;
+
+
+    localStorage.setItem(stats, JSON.stringify(timeguard));
+
+
+}
+
+function load() {
+    loade = JSON.parse(localStorage.getItem(stats));
+    if (loade === null) {} else {
+        for (let i in loade) {
+            timeguard[i] = loade[i];
+            const salvo = document.createElement("option");
+            salvo.setAttribute("class", "save");
+            salvo.setAttribute("id", `a_${item}`);
+            salvo.setAttribute("value", `${loade[i]}`);
+            salvo.setAttribute("selected", "");
+            saves.appendChild(salvo);
+            salvo.innerHTML = `${loade[i]}`;
+
+        }
+        item = loade.length;
+    }
+
+
 }
