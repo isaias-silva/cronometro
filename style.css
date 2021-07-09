@@ -1,6 +1,6 @@
 body {
-    background: linear-gradient(to left, purple, blue);
-    transition: 1s ease-in-out;
+    background: blue;
+    animation: grade 7s infinite;
 }
 
 #cronometro {
@@ -78,5 +78,17 @@ footer {
     #cronometro select {
         position: relative;
         top: 40px;
+    }
+}
+
+@keyframes grade {
+    0% {
+        background: blue;
+    }
+    50% {
+        background: rgb(201, 0, 201)
+    }
+    100% {
+        background: blue;
     }
 }
