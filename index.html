@@ -10,7 +10,7 @@
 </head>
 
 
-<body>
+<body onload="load()">
     <div id="cronometro">
         <input type="text" name="a" id="time" disabled="disabled" value="00:00:00">
         <button onclick="main(this.value)" value="i" id="button-main">iniciar</button>
@@ -20,13 +20,19 @@
             <select name="saves" id="saves" onclick="carregar(this.value)">
             
           
-        </select>
+             </select>
 
 
         </div>
 
     </div>
+
+
+    <footer>
+        <p>Isaías santos &copy;</p>
+    </footer>
     <script src="script.js"></script>
+
 </body>
 
 </html>
