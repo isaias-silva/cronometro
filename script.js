@@ -1,5 +1,6 @@
 const time = window.document.getElementById("time");
 const saves = window.document.getElementById("saves");
+const b = document.getElementById('butonito');
 let s = 00;
 let min = 00;
 let mil = 00;
@@ -9,6 +10,7 @@ let timeguard = [];
 let stats;
 let iten_s;
 let loade;
+let machine = "off";
 
 function save() {
 
@@ -64,13 +66,16 @@ function main(v) {
         window.document.getElementById("button-main").innerHTML = "pausar";
         window.document.getElementById("button-main").value = "p";
         interval = setInterval(temp, 16);
+        machine = "on"
+        b.style.display = 'none';
     } else if (v == "p") {
         window.document.getElementById("button-main").innerHTML = "iniciar";
         window.document.getElementById("button-main").value = "i";
-
+        b.style.display = 'block';
         clearInterval(interval);
         guard()
         save();
+        machine = "off"
     } else if (v == "z") {
         time.value = "00:00:00";
 
@@ -142,13 +147,18 @@ function load() {
 }
 
 function del() {
+    loade = JSON.parse(localStorage.getItem(stats));
 
 
-    saves.innerText = ""
+    if (machine == "off" && loade !== null) {
+        saves.innerText = ""
 
-    localStorage.clear();
+        localStorage.clear();
 
-    alert('limpo!')
+        alert('limpo!')
+    } else {
+
+    }
 
 
 }
